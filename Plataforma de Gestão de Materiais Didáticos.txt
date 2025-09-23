@@ -1,0 +1,29 @@
+O conhecimento gerado na entrevista
+
+Contexto do problema
+Explicar que materiais produzidos internamente estão dispersos, sem padronização, dificultando a gestão e utilização.
+
+Objetivos do sistema
+Centralizar materiais (planos de curso, situações de aprendizagem, recursos digitais).
+Permitir upload pelos instrutores.
+Garantir validação por coordenadores.
+Disponibilizar busca por competências, unidades curriculares e áreas.
+
+Usuários e papéis
+
+Instrutor → faz upload e organiza seus materiais.
+Coordenador → valida ou rejeita materiais enviados.
+Administrador (opcional) → gerencia acessos e mantém o sistema.
+
+Funcionalidades iniciais
+
+Upload de arquivos com metadados (nome do curso, área, competências etc.).
+Organização por categorias/áreas/unidades curriculares.
+Busca avançada (palavra-chave, área, competência).
+Validação por coordenadores com status (pendente, aprovado, reprovado).
+
+Critérios de sucesso
+Plataforma acessível a todos os instrutores e coordenadores.
+Materiais organizados e padronizados.
+Busca rápida e eficiente.
+Redução da dispersão de arquivos.
