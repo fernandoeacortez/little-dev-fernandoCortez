@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma SENAI - Gestão de Materiais Didáticos</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <header>
+        <h1>Plataforma SENAI - Gestão de Materiais Didáticos</h1>
+        <p>Desenvolvimento Front-end e Back-end (Node.js e MySQL)</p>
+    </header>
+
+    <main>
+        <section id="cadastro-form">
+            <h2>1. Cadastro de Novo Material</h2>
+            <form id="form-material">
+                <label for="titulo">Título do Material:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="Plano de Curso">Plano de Curso</option>
+                    <option value="Situacao de Aprendizagem">Situação de Aprendizagem</option>
+                    <option value="Recurso Digital">Recurso Digital</option>
+                </select>
+
+                <label for="caminho">Caminho/URL do Arquivo (Simulação de Upload):</label>
+                <input type="url" id="caminho" name="caminho" required>
+
+                <label for="competencia">Competência:</label>
+                <input type="text" id="competencia" name="competencia">
+
+                <label for="area">Área:</label>
+                <input type="text" id="area" name="area">
+                
+                <button type="submit">Cadastrar e Enviar para Validação</button>
+            </form>
+        </section>
+        
+        <section id="filtro-busca">
+            <h2>2. Filtro e Busca de Materiais</h2>
+            <form id="form-filtro">
+                <div>
+                    <input type="text" id="filtro-competencia" placeholder="Buscar por Competência">
+                    <input type="text" id="filtro-area" placeholder="Buscar por Área">
+                    <select id="filtro-status">
+                        <option value="">Todos os Status</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="aprovado">Aprovado</option>
+                        <option value="reprovado">Reprovado</option>
+                    </select>
+                    <button type="submit">Buscar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="lista-materiais">
+            <h2>3. Materiais Cadastrados</h2>
+            <table id="tabela-materiais">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Tipo</th>
+                        <th>Competência/Área</th>
+                        <th>Status</th>
+                        <th>Data Upload</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+        
+        <section id="secao-validacao" style="display: none;">
+            <h2>4. Validação de Material (Coordenador)</h2>
+            <form id="form-validacao">
+                <label for="validacao-id">ID do Material a ser Validado:</label>
+                <input type="number" id="validacao-id" required readonly>
+                
+                <label for="validacao-status">Status:</label>
+                <select id="validacao-status" required>
+                    <option value="aprovado">Aprovar</option>
+                    <option value="reprovado">Reprovar</option>
+                </select>
+                
+                <label for="validacao-obs">Observações (para o instrutor):</label>
+                <textarea id="validacao-obs" required></textarea>
+                
+                <button type="submit">Registrar Validação</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

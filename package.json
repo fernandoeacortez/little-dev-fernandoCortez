@@ -1,0 +1,16 @@
+{
+  "name": "little-dev-fernandocortez",
+  "version": "1.0.0",
+  "description": "Projeto SENAI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.9.1"
+  }
+}
