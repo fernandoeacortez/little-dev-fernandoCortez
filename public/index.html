@@ -26,15 +26,16 @@
                     <option value="Recurso Digital">Recurso Digital</option>
                 </select>
 
-                <label for="caminho">Caminho/URL do Arquivo (Simulação de Upload):</label>
-                <input type="url" id="caminho" name="caminho" required>
-
-                <label for="competencia">Competência:</label>
-                <input type="text" id="competencia" name="competencia">
-
                 <label for="area">Área:</label>
-                <input type="text" id="area" name="area">
-                
+                <select id="area" name="area" required>
+                    <option value="" disabled selected>Selecione a Área</option>
+                    <option value="TI">TI</option>
+                    <option value="Gestão">Gestão</option>
+                    <option value="Indústria">Indústria</option>
+                    <option value="Eletrotécnica">Eletrotécnica</option>
+                    <option value="Segurança">Segurança</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
                 <button type="submit">Cadastrar e Enviar para Validação</button>
             </form>
         </section>
@@ -43,8 +44,15 @@
             <h2>2. Filtro e Busca de Materiais</h2>
             <form id="form-filtro">
                 <div>
-                    <input type="text" id="filtro-competencia" placeholder="Buscar por Competência">
-                    <input type="text" id="filtro-area" placeholder="Buscar por Área">
+                    <select id="filtro-area">
+                        <option value="">Buscar por Área</option>
+                        <option value="TI">TI</option>
+                        <option value="Gestão">Gestão</option>
+                        <option value="Indústria">Indústria</option>
+                        <option value="Eletrotécnica">Eletrotécnica</option>
+                        <option value="Segurança">Segurança</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
                     <select id="filtro-status">
                         <option value="">Todos os Status</option>
                         <option value="pendente">Pendente</option>
@@ -56,7 +64,7 @@
             </form>
         </section>
 
-        <section id="lista-materiais">
+        <section id="lista-materiais" style="display: none;">
             <h2>3. Materiais Cadastrados</h2>
             <table id="tabela-materiais">
                 <thead>
@@ -64,14 +72,14 @@
                         <th>ID</th>
                         <th>Título</th>
                         <th>Tipo</th>
-                        <th>Competência/Área</th>
+                        <th>Área</th>
                         <th>Status</th>
                         <th>Data Upload</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    </tbody>
+                </tbody>
             </table>
         </section>
         

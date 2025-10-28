@@ -29,24 +29,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 3. ROTA DE CORREÇÃO ('Cannot GET /')
 app.get('/', (req, res) => {
-    // CORREÇÃO: Usa sendFile para enviar o arquivo que está em 'public/index.html'
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // 4. ROTAS (ENDPOINTS) DA API
 
-// 4.1. Rota GET: Listar e Buscar Materiais
+// 4.1. Rota GET: Listar e Buscar Materiais (AJUSTADA)
 app.get('/api/materiais', (req, res) => {
-    const { competencia, area, status } = req.query; 
+    // REMOVIDO 'competencia' do destructuring, pois o filtro será totalmente removido
+    const { area, status } = req.query; 
     
-    let sql = 'SELECT id, titulo, tipo, status_validacao, data_upload, competencia, unidade_curricular, area FROM materiais WHERE 1=1';
+    // Seleção de colunas sem 'caminho_arquivo' e 'competencia'
+    let sql = 'SELECT id, titulo, tipo, status_validacao, data_upload, unidade_curricular, area FROM materiais WHERE 1=1';
     let params = [];
-
-    // Adiciona filtros dinamicamente
-    if (competencia) {
-        sql += ' AND competencia LIKE ?';
-        params.push(`%${competencia}%`);
-    }
+    
+    // REMOVIDO: O filtro por competência não será mais aplicado, pois foi removido do Front-end
+    // if (competencia) { ... }
+    
     if (area) {
         sql += ' AND area LIKE ?';
         params.push(`%${area}%`);
@@ -67,12 +66,13 @@ app.get('/api/materiais', (req, res) => {
     });
 });
 
-// 4.2. Rota POST: Cadastrar um novo material
+// 4.2. Rota POST: Cadastrar um novo material (AJUSTADA)
 app.post('/api/materiais', (req, res) => {
-    const { titulo, tipo, caminho_arquivo, competencia, unidade_curricular, area } = req.body;
+    const { titulo, tipo, unidade_curricular, area } = req.body;
     
-    const sql = 'INSERT INTO materiais (titulo, tipo, caminho_arquivo, competencia, unidade_curricular, area) VALUES (?, ?, ?, ?, ?, ?)';
-    const values = [titulo, tipo, caminho_arquivo, competencia || null, unidade_curricular || null, area || null];
+    // Query de inserção ajustada
+    const sql = 'INSERT INTO materiais (titulo, tipo, unidade_curricular, area) VALUES (?, ?, ?, ?)';
+    const values = [titulo, tipo, unidade_curricular || null, area || null];
 
     db.query(sql, values, (err, result) => {
         if (err) {
@@ -86,10 +86,9 @@ app.post('/api/materiais', (req, res) => {
     });
 });
 
-// 4.3. Rota PUT: Validação por Coordenador
+// 4.3. Rota PUT: Validação por Coordenador (SEM ALTERAÇÃO)
 app.put('/api/validacao/:id', (req, res) => {
     const materialId = req.params.id;
-    // coodenador_id = 1 é um ID SIMULADO
     const { novo_status, observacoes, coordenador_id = 1 } = req.body; 
 
     if (!['aprovado', 'reprovado'].includes(novo_status)) {

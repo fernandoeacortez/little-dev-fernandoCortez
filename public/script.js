@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Carrega a lista de materiais assim que a página carregar (GET)
-    carregarMateriais();
+    // A chamada inicial para carregar materiais continua removida, pois a tabela está oculta.
+    // carregarMateriais(); 
     
     // Listeners para os formulários
     document.getElementById('form-material').addEventListener('submit', cadastrarMaterial);
+    
+    // REATIVADO: Listener do formulário de filtro
     document.getElementById('form-filtro').addEventListener('submit', buscarMateriais);
+    
     document.getElementById('form-validacao').addEventListener('submit', validarMaterial);
 });
 
@@ -18,8 +21,6 @@ async function cadastrarMaterial(e) {
     const formData = {
         titulo: form.titulo.value,
         tipo: form.tipo.value,
-        caminho_arquivo: form.caminho.value,
-        competencia: form.competencia.value,
         area: form.area.value,
     };
 
@@ -33,7 +34,7 @@ async function cadastrarMaterial(e) {
         if (response.status === 201) {
             alert('Material cadastrado com sucesso e enviado para validação!');
             form.reset();
-            carregarMateriais(); // Recarrega a lista
+            // Nenhuma recarga da lista aqui, pois a lista está oculta.
         } else {
             const errorData = await response.json();
             alert('Erro ao cadastrar material: ' + errorData.error);
@@ -45,24 +46,25 @@ async function cadastrarMaterial(e) {
 }
 
 // ------------------------------------
-// 2. FUNÇÃO PARA BUSCA E LISTAGEM (GET)
+// 2. FUNÇÃO PARA BUSCA E LISTAGEM (GET) - REATIVADA
 // ------------------------------------
 function buscarMateriais(e) {
     e.preventDefault();
-    // Chama a função principal de carregamento, mas com filtros
+    // Reativa a busca ao clicar no botão
     carregarMateriais(true); 
+    // Exibe a seção de listagem após a busca
+    document.getElementById('lista-materiais').style.display = 'block';
 }
 
 async function carregarMateriais(isBusca = false) {
     let url = '/api/materiais';
     
     if (isBusca) {
-        const competencia = document.getElementById('filtro-competencia').value;
+        // O campo 'competencia' foi removido e não está aqui.
         const area = document.getElementById('filtro-area').value;
         const status = document.getElementById('filtro-status').value;
         
         const params = new URLSearchParams();
-        if (competencia) params.append('competencia', competencia);
         if (area) params.append('area', area);
         if (status) params.append('status', status);
 
@@ -78,7 +80,7 @@ async function carregarMateriais(isBusca = false) {
 
     } catch (error) {
         console.error('Erro ao carregar materiais:', error);
-        document.querySelector('#tabela-materiais tbody').innerHTML = `<tr><td colspan="7">Erro ao carregar os dados.</td></tr>`;
+        document.querySelector('#tabela-materiais tbody').innerHTML = `<tr><td colspan="6">Erro ao carregar os dados.</td></tr>`; 
     }
 }
 
@@ -91,7 +93,9 @@ function renderizarTabela(materiais) {
         row.insertCell().textContent = material.id;
         row.insertCell().textContent = material.titulo;
         row.insertCell().textContent = material.tipo;
-        row.insertCell().textContent = `${material.competencia || ''} / ${material.area || ''}`;
+        
+        // Célula da Área
+        row.insertCell().textContent = material.area || 'N/A';
         
         // Célula de Status com cor
         const statusCell = row.insertCell();
@@ -129,7 +133,7 @@ async function validarMaterial(e) {
     const validacaoData = {
         novo_status: form['validacao-status'].value,
         observacoes: form['validacao-obs'].value,
-        coordenador_id: 1 // ID Simulado, já que não temos login (conforme requisito)
+        coordenador_id: 1
     };
 
     try {
@@ -143,7 +147,11 @@ async function validarMaterial(e) {
             alert('Validação registrada com sucesso!');
             form.reset();
             document.getElementById('secao-validacao').style.display = 'none'; // Esconde o formulário
-            carregarMateriais();
+            
+            // Recarrega a lista apenas se ela estiver visível
+            if(document.getElementById('lista-materiais').style.display !== 'none') {
+                carregarMateriais();
+            }
         } else {
             const errorData = await response.json();
             alert('Erro ao validar: ' + (errorData.error || 'Erro desconhecido.'));
