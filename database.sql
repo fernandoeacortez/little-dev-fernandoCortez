@@ -65,3 +65,52 @@ INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia,
 ('Plano de Curso AWS Básico', 'Plano de Curso', '/uploads/aws_basico.pdf', 2, 'Cloud Computing', 'Infraestrutura', 'TI', 'aprovado'),
 ('Situação de Aprendizagem JS', 'Situacao de Aprendizagem', '/uploads/sa_js.docx', 2, 'Desenvolvimento Web', 'Front-end', 'TI', 'pendente'),
 ('Ebook Gestão de Projetos', 'Recurso Digital', '/uploads/ebook_pm.pdf', 2, 'Metodologias Ágeis', 'Gerenciamento', 'Gestão', 'reprovado');
+
+-- Seleciona o banco de dados
+USE materiais_didaticos;
+
+-- BLOCO DE INSERÇÃO RÁPIDA DE NOVOS MATERIAIS
+
+-- Materiais da Área de TI
+INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia, unidade_curricular, area, status_validacao) VALUES 
+('Guia Prático de Docker e Containers', 'Recurso Digital', '/uploads/docker_guia.pdf', 2, 'DevOps', 'Infraestrutura', 'TI', 'aprovado'),
+('Situação de Aprendizagem de React Hooks', 'Situacao de Aprendizagem', '/uploads/sa_react.docx', 2, 'Desenvolvimento Web', 'Front-end', 'TI', 'pendente'),
+('E-book sobre Segurança de Redes', 'Recurso Digital', '/uploads/seguranca_redes.pdf', 2, 'Segurança Cibernética', 'Redes', 'TI', 'aprovado'),
+('Plano de Curso Lógica de Programação', 'Plano de Curso', '/uploads/logica_prog.pdf', 2, 'Fundamentos', 'Introdução à Programação', 'TI', 'pendente');
+
+-- Materiais da Área de Gestão
+INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia, unidade_curricular, area, status_validacao) VALUES 
+('Manual de Boas Práticas de Liderança', 'Recurso Digital', '/uploads/manual_lideranca.pdf', 2, 'Gestão de Equipes', 'Liderança', 'Gestão', 'aprovado'),
+('Checklist de Auditoria Interna', 'Recurso Digital', '/uploads/checklist_auditoria.xlsx', 2, 'Qualidade', 'Processos', 'Gestão', 'reprovado'),
+('Simulação de Orçamento Empresarial', 'Situacao de Aprendizagem', '/uploads/sim_orcamento.pdf', 2, 'Finanças', 'Controladoria', 'Gestão', 'pendente');
+
+-- Materiais da Área de Indústria (Simulação)
+INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia, unidade_curricular, area, status_validacao) VALUES 
+('Normas Regulamentadoras - NR12', 'Recurso Digital', '/uploads/nr12_comp.pdf', 2, 'Segurança do Trabalho', 'Regulamentação', 'Indústria', 'aprovado'),
+('Procedimento de Calibragem de Máquinas', 'Plano de Curso', '/uploads/calibragem_maquinas.docx', 2, 'Manutenção Industrial', 'Operações', 'Indústria', 'reprovado');
+
+-- FIM DO BLOCO
+
+-- Seleciona o banco de dados
+USE materiais_didaticos;
+
+-- BLOCO DE INSERÇÃO RÁPIDA DE NOVOS MATERIAIS
+
+-- Materiais da Área de TI
+INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia, unidade_curricular, area, status_validacao) VALUES 
+('Guia Prático de Docker e Containers', 'Recurso Digital', '/uploads/docker_guia.pdf', 2, 'DevOps', 'Infraestrutura', 'TI', 'aprovado'),
+('Situação de Aprendizagem de React Hooks', 'Situacao de Aprendizagem', '/uploads/sa_react.docx', 2, 'Desenvolvimento Web', 'Front-end', 'TI', 'pendente'),
+('E-book sobre Segurança de Redes', 'Recurso Digital', '/uploads/seguranca_redes.pdf', 2, 'Segurança Cibernética', 'Redes', 'TI', 'aprovado'),
+('Plano de Curso Lógica de Programação', 'Plano de Curso', '/uploads/logica_prog.pdf', 2, 'Fundamentos', 'Introdução à Programação', 'TI', 'pendente');
+
+-- Materiais da Área de Gestão
+INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia, unidade_curricular, area, status_validacao) VALUES 
+('Manual de Boas Práticas de Liderança', 'Recurso Digital', '/uploads/manual_lideranca.pdf', 2, 'Gestão de Equipes', 'Liderança', 'Gestão', 'aprovado'),
+('Checklist de Auditoria Interna', 'Recurso Digital', '/uploads/checklist_auditoria.xlsx', 2, 'Qualidade', 'Processos', 'Gestão', 'reprovado'),
+('Simulação de Orçamento Empresarial', 'Situacao de Aprendizagem', '/uploads/sim_orcamento.pdf', 2, 'Finanças', 'Controladoria', 'Gestão', 'pendente');
+
+
+INSERT INTO materiais (titulo, tipo, caminho_arquivo, instrutor_id, competencia, unidade_curricular, area, status_validacao) VALUES 
+('Normas Regulamentadoras - NR12', 'Recurso Digital', '/uploads/nr12_comp.pdf', 2, 'Segurança do Trabalho', 'Regulamentação', 'Indústria', 'aprovado'),
+('Procedimento de Calibragem de Máquinas', 'Plano de Curso', '/uploads/calibragem_maquinas.docx', 2, 'Manutenção Industrial', 'Operações', 'Indústria', 'reprovado');
+
